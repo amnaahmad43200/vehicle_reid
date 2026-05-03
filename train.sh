@@ -10,7 +10,7 @@ STUDENT_ID=kn00794 STUDENT_NAME="Jane Doe" python main.py \
 --optim amsgrad \
 --lr 0.0003 \
 --max-epoch 10 \
---stepsize 20 40 \
+--stepsize 4 8 \
 --train-batch-size 64 \
 --test-batch-size 100 \
 --save-dir logs/mobilenet_v3_small-veri
