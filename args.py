@@ -41,8 +41,19 @@ def argument_parser():
     parser.add_argument(
         "--split-id", type=int, default=0, help="split index (note: 0-based)"
     )
-    parser.add_argument("--height", type=int, default=128, help="height of an image")
-    parser.add_argument("--width", type=int, default=256, help="width of an image")
+    parser.add_argument(
+        "--height",
+        type=int,
+        default=None,
+        help="height of an image"
+    )
+    
+    parser.add_argument(
+        "--width",
+        type=int,
+        default=None,
+        help="width of an image"
+    )
     parser.add_argument(
         "--train-sampler",
         type=str,
@@ -75,12 +86,17 @@ def argument_parser():
     parser.add_argument(
         "--optim",
         type=str,
-        default="adam",
-        help="optimization algorithm (see optimizers.py)",
+        default=None,
+        help="optimization algorithm"
     )
+    
     parser.add_argument(
-        "--lr", default=0.0003, type=float, help="initial learning rate"
+        "--lr",
+        type=float,
+        default=None,
+        help="initial learning rate"
     )
+
     parser.add_argument(
         "--weight-decay", default=5e-04, type=float, help="weight decay"
     )
@@ -134,12 +150,18 @@ def argument_parser():
     )
 
     parser.add_argument(
-        "--train-batch-size", default=32, type=int, help="training batch size"
+        "--train-batch-size",
+        type=int,
+        default=None,
+        help="training batch size"
     )
+    
     parser.add_argument(
-        "--test-batch-size", default=100, type=int, help="test batch size"
+        "--test-batch-size",
+        type=int,
+        default=None,
+        help="test batch size"
     )
-
     # ************************************************************
     # Learning rate scheduler options
     # ************************************************************
@@ -151,10 +173,10 @@ def argument_parser():
     )
     parser.add_argument(
         "--stepsize",
-        default=[20, 40],
-        nargs="+",
         type=int,
-        help="stepsize to decay learning rate",
+        default=None,
+        nargs="+",
+        help="stepsize to decay learning rate"
     )
     parser.add_argument("--gamma", default=0.1, type=float, help="learning rate decay")
 
@@ -192,7 +214,13 @@ def argument_parser():
     # ************************************************************
     # Architecture
     # ************************************************************
-    parser.add_argument("-a", "--arch", type=str, default="resnet50")
+    parser.add_argument(
+        "-a",
+        "--arch",
+        type=str,
+        default=None,
+        help="model architecture"
+    )
     parser.add_argument(
         "--no-pretrained", action="store_true", help="do not load pretrained weights"
     )
